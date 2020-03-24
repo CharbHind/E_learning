@@ -8,14 +8,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
-        android:layout_width="330dp"
-        android:layout_height="106dp"
+        android:layout_width="418dp"
+        android:layout_height="124dp"
         android:background="@drawable/rectangle_118"
         android:orientation="horizontal"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
@@ -32,71 +31,82 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.783"
-            tools:layout_editor_absoluteX="64dp" />
+            app:layout_constraintVertical_bias="0.696"
+            tools:layout_editor_absoluteX="94dp" />
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="41dp"
+            android:layout_height="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView"
+            app:layout_constraintHorizontal_bias="0.603"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.683"
+            app:srcCompat="@drawable/trace_52" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="279dp"
-        android:layout_height="154dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="274dp"
+        android:layout_height="184dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
-        app:layout_constraintVertical_bias="0.208"
+        app:layout_constraintVertical_bias="0.493"
         app:srcCompat="@drawable/groupe_94" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout5"
-        android:layout_width="283dp"
-        android:layout_height="252dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="364dp"
+        android:layout_height="306dp"
+        android:layout_marginBottom="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="27dp">
+        tools:layout_editor_absoluteX="23dp">
 
         <Button
             android:id="@+id/creer_btn"
-            android:layout_width="254dp"
-            android:layout_height="58dp"
+            android:layout_width="319dp"
+            android:layout_height="74dp"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/rectangle_12"
             android:onClick="onClickProfCreer"
-            android:text="@string/creer_une_seance"
+            android:text="Créer Une Séance"
             android:textColor="#FFFFFFFF"
-            android:textSize="20sp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.318"
+            app:layout_constraintHorizontal_bias="0.3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.427" />
+            app:layout_constraintVertical_bias="0.209" />
 
         <Button
             android:id="@+id/gerer_btn"
-            android:layout_width="255dp"
-            android:layout_height="52dp"
+            android:layout_width="315dp"
+            android:layout_height="70dp"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/rectangle_119"
             android:onClick="onClickProfModule"
-            android:text="@string/gerer_mes_seance"
+            android:text="Mes Séances"
             android:textColor="#FFFFFFFF"
-            android:textSize="20sp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.304"
+            app:layout_constraintHorizontal_bias="0.523"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.872" />
+            app:layout_constraintTop_toBottomOf="@+id/creer_btn"
+            app:layout_constraintVertical_bias="0.495" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
