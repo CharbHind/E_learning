@@ -2,12 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="30dp"
+    android:layout_height="30dp">
+
+</androidx.constraintlayout.widget.ConstraintLayout>
     <Button
         android:id="@+id/addBtnRessources"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/RESSOURCES"
-        />
+        android:text="@string/RESSOURCES" />
+
     <Button
         android:id="@+id/addBtnM_S1"
         android:layout_width="match_parent"

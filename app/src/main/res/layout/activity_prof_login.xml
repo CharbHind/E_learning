@@ -38,8 +38,8 @@ tools:context=".EtudiantLoginActivity">
 
     <ImageView
         android:id="@+id/GoBackIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="24dp"
+        android:layout_height="37dp"
         android:contentDescription="@string/back"
         android:onClick="goback"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -38,6 +38,7 @@
             android:id="@+id/imageView13"
             android:layout_width="41dp"
             android:layout_height="28dp"
+            android:onClick="back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textView"
             app:layout_constraintHorizontal_bias="0.603"

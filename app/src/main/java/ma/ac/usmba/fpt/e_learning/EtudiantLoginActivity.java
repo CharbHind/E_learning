@@ -26,7 +26,7 @@ public class EtudiantLoginActivity extends AppCompatActivity {
     }
 
     public void goback(View view) {
-
+        onBackPressed();
     }
     private boolean validatecne() {
         String cnee= cne.getText().toString().trim();

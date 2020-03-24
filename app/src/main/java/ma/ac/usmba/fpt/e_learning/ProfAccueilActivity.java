@@ -23,4 +23,7 @@ public class ProfAccueilActivity extends AppCompatActivity {
         Intent intent = new Intent(ProfAccueilActivity.this, ProfCreerSeanceActivity.class);
         startActivity(intent);
     }
+    public void back(View view) {
+        onBackPressed();
+    }
 }

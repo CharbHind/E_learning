@@ -23,5 +23,8 @@ public class EtudiantAccueilActivity extends AppCompatActivity {
         Intent intent = new Intent(EtudiantAccueilActivity.this, EtudiantSemestreActivity.class);
         startActivity(intent);
     }
+    public void back(View view) {
+        onBackPressed();
+    }
 
 }
