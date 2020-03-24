@@ -99,23 +99,25 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
             android:layout_marginLeft="160dp"
+            android:layout_marginTop="96dp"
             android:layout_marginBottom="44dp"
             android:background="@drawable/my_buttons"
             android:text="@string/valider"
             android:textColor="#FFFFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
         <Button
             android:id="@+id/button_creer_quiz"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
-            android:layout_marginTop="72dp"
+            android:layout_marginTop="96dp"
             android:background="@drawable/my_buttons"
             android:text="@string/creer_quiz"
             android:textColor="#FFFFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_view_attach_file" />
 
@@ -145,50 +147,13 @@
 
         <TextView
             android:id="@+id/txt_view_file_path"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="176dp"
-            android:layout_marginLeft="176dp"
+            android:layout_width="406dp"
+            android:layout_height="63dp"
             android:layout_marginTop="28dp"
-            android:text="path"
             app:layout_constraintBottom_toTopOf="@+id/button_creer_quiz"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_view_attach_file"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/img_view_record"
-            android:layout_width="41dp"
-            android:layout_height="26dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="48dp"
-            android:layout_marginRight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-            app:srcCompat="@drawable/ic_mic" />
-
-        <SeekBar
-            android:id="@+id/seekbar_audio"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="148dp"
-            android:layout_height="26dp"
-            android:layout_marginEnd="60dp"
-            android:layout_marginRight="60dp"
-            app:layout_constraintBottom_toTopOf="@+id/button_valider"
-            app:layout_constraintEnd_toStartOf="@+id/img_view_record"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-            app:layout_constraintVertical_bias="0.285" />
-
-        <ImageView
-            android:id="@+id/img_view_play"
-            android:layout_width="wrap_content"
-            android:layout_height="26dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toStartOf="@+id/seekbar_audio"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-            app:srcCompat="@drawable/ic_play" />
+            app:layout_constraintVertical_bias="0.08" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

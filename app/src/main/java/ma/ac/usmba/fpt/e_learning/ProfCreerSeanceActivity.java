@@ -2,6 +2,7 @@ package ma.ac.usmba.fpt.e_learning;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,44 +11,35 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
+import ma.ac.usmba.fpt.e_learning.Controller.FileUtils;
 import ma.ac.usmba.fpt.e_learning.Controller.QuizAdapter;
 import ma.ac.usmba.fpt.e_learning.Model.Quiz;
 
 public class ProfCreerSeanceActivity extends AppCompatActivity {
-    //private HashMap<String,Boolean> quiz;
     final String QUIZ = "Quiz";
     ArrayList<Quiz> quizzes = new ArrayList<>();
     Button button_valider,creer_quiz;
     RecyclerView recyclerView;
     QuizAdapter quizAdapter;
     ImageView attach_file;
-    ImageView img_view_record;
-    SeekBar seekBar_audio;
     TextView file_path;
     final String[] PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                     Manifest.permission.READ_EXTERNAL_STORAGE};
-    boolean storage_permission = false;
     final int FILE_CHOOSER = 50;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +51,6 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         attach_file = (ImageView) findViewById(R.id.img_view_attach_file);
         file_path = (TextView) findViewById(R.id.txt_view_file_path);
-        img_view_record = (ImageView) findViewById(R.id.img_view_record);
-        seekBar_audio = (SeekBar) findViewById(R.id.seekbar_audio);
         //Move to the QuizPopUp
         creer_quiz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,22 +83,11 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
                     intent.setType("*/*");
                     intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                     startActivityForResult(Intent.createChooser(intent,"Choisir un fichier"),FILE_CHOOSER);
-                    //start
                 }else{
                     ActivityCompat.requestPermissions(ProfCreerSeanceActivity.this, PERMISSIONS, FILE_CHOOSER);
                 }
             }
         });
-        //Audio Recorder listener
-        //seekBar_aud
-        img_view_record.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-
-                return false;
-            }
-        });
-        //When the user release the button Up or down
 
     }
 
@@ -157,7 +136,7 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         }
     }
     //Check if the user has given the application the access to Strorage.
-    public  boolean hasPermissions(Context context, String... permissions) {
+    public  boolean hasPermissions(Context context, String  permissions[]) {
         if (context != null && permissions != null) {
             for (String permission : permissions) {
                 if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
@@ -169,26 +148,31 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
     }
     //
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode){
             case FILE_CHOOSER:
+                String selected_paths = "";
                 if(resultCode == RESULT_OK){
+                    //Check if the user select multiple files
                     if(data.getClipData() != null){
-                        int count = 0;
                         int files_count = data.getClipData().getItemCount();
-                        String uris [] = new String[files_count];
-                        String selected_paths = "";
-                        while(count < files_count){
-                            uris[count] = data.getClipData().getItemAt(count).getUri().getPath();
-                            selected_paths += "  " + data.getClipData().getItemAt(count).getUri().getPath();
-                            count++;
-                        }
+                            int count = 0;
+                            String absolute_paths [] = new String[files_count];
+                            while(count < files_count){
+                                absolute_paths[count] = FileUtils.getPath(this,data.getClipData().getItemAt(count).getUri());
+                                selected_paths += count+")" + FileUtils.getFileName(absolute_paths[count]);
+                                count++;
+                            }
+                            file_path.setText(selected_paths);
+                        }else if(data.getData() != null){//The user select one file
+                        selected_paths += FileUtils.getFileName(FileUtils.getPath(this,data.getData()));
                         file_path.setText(selected_paths);
-                        Toast.makeText(this, "Number of selected file(s)  is : " + files_count, Toast.LENGTH_SHORT).show();
                     }
-                }
+                    Toast.makeText(this, "Selected File " + selected_paths, Toast.LENGTH_SHORT).show();
+                    }
                 break;
         }
     }
