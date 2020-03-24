@@ -14,9 +14,11 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,20 +42,25 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     QuizAdapter quizAdapter;
     ImageView attach_file;
+    ImageView img_view_record;
+    SeekBar seekBar_audio;
     TextView file_path;
     final String[] PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                     Manifest.permission.READ_EXTERNAL_STORAGE};
     boolean storage_permission = false;
-    final int FILE_CHOOSER = 1;
+    final int FILE_CHOOSER = 50;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prof_creer_seance);
+        //Necessary Declarations
         creer_quiz = (Button) findViewById(R.id.button_creer_quiz);
         button_valider = (Button) findViewById(R.id.button_valider);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         attach_file = (ImageView) findViewById(R.id.img_view_attach_file);
         file_path = (TextView) findViewById(R.id.txt_view_file_path);
+        img_view_record = (ImageView) findViewById(R.id.img_view_record);
+        seekBar_audio = (SeekBar) findViewById(R.id.seekbar_audio);
         //Move to the QuizPopUp
         creer_quiz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,12 +91,25 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
                 if(hasPermissions(ProfCreerSeanceActivity.this,PERMISSIONS)){
                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                     intent.setType("*/*");
-                    startActivityForResult(intent,FILE_CHOOSER);
+                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                    startActivityForResult(Intent.createChooser(intent,"Choisir un fichier"),FILE_CHOOSER);
+                    //start
                 }else{
                     ActivityCompat.requestPermissions(ProfCreerSeanceActivity.this, PERMISSIONS, FILE_CHOOSER);
                 }
             }
         });
+        //Audio Recorder listener
+        //seekBar_aud
+        img_view_record.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                return false;
+            }
+        });
+        //When the user release the button Up or down
+
     }
 
     //Display the content of the quizzes
@@ -155,10 +175,19 @@ public class ProfCreerSeanceActivity extends AppCompatActivity {
         switch (requestCode){
             case FILE_CHOOSER:
                 if(resultCode == RESULT_OK){
-                    Uri uri = data.getData();
-                    File file = new File(uri.getPath());
-                    Toast.makeText(this, "Path selected is : " + file.getAbsolutePath(), Toast.LENGTH_SHORT).show();
-                    file_path.setText(file.getAbsolutePath());
+                    if(data.getClipData() != null){
+                        int count = 0;
+                        int files_count = data.getClipData().getItemCount();
+                        String uris [] = new String[files_count];
+                        String selected_paths = "";
+                        while(count < files_count){
+                            uris[count] = data.getClipData().getItemAt(count).getUri().getPath();
+                            selected_paths += "  " + data.getClipData().getItemAt(count).getUri().getPath();
+                            count++;
+                        }
+                        file_path.setText(selected_paths);
+                        Toast.makeText(this, "Number of selected file(s)  is : " + files_count, Toast.LENGTH_SHORT).show();
+                    }
                 }
                 break;
         }
