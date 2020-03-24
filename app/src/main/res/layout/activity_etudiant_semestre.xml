@@ -1,56 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="30dp"
-    android:layout_height="30dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-    <Button
-        android:id="@+id/addBtnRessources"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/RESSOURCES" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="412dp"
+        android:layout_height="131dp"
+        android:background="@drawable/rectangle_11">
 
-    <Button
-        android:id="@+id/addBtnM_S1"
+        <Button
+            android:id="@+id/addBtnRessources"
+            android:layout_width="271dp"
+            android:layout_height="72dp"
+            android:background="@drawable/rectangle_11"
+            android:text="@string/RESSOURCES"
+            android:textColor="@color/design_default_color_on_primary"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.808"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.491" />
+
+        <ImageView
+            android:id="@+id/imageView16"
+            android:layout_width="39dp"
+            android:layout_height="41dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/addBtnRessources"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/trace_52" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-    <LinearLayout
-        android:id="@+id/linearVertical"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="257dp">
+
+        <Button
+            android:id="@+id/addBtnM_S1"
+            android:layout_width="325dp"
+            android:layout_height="76dp"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:background="@drawable/rectangle_119"
+            android:textColor="@color/design_default_color_on_primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.16" />
+
         <LinearLayout
-            android:id="@+id/linear1_S1"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:id="@+id/linearVertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center">
+            android:orientation="vertical">
 
+            <LinearLayout
+                android:id="@+id/linear1_S1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-    <Button
-        android:id="@+id/addBtnM_S2"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="221dp">
+
+        <Button
+            android:id="@+id/addBtnM_S2"
+            android:layout_width="325dp"
+            android:layout_height="76dp"
+            android:background="@drawable/rectangle_119"
+            android:textColor="@color/design_default_color_on_primary"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.263" />
+
+        <LinearLayout
+        android:id="@+id/linearVerticalS2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
-    <LinearLayout
-        android:id="@+id/linearVerticalS2"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:orientation="vertical">
+
         <LinearLayout
             android:id="@+id/linear1_S2"
-            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:gravity="center"
-            android:layout_gravity="center">
+            android:orientation="vertical">
 
         </LinearLayout>
     </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </LinearLayout>

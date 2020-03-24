@@ -68,7 +68,7 @@ public class EtudiantSemestreActivity extends AppCompatActivity {
             buttonModules_S1.add(new Button(this));
             buttonModules_S1.get(i).setHeight(150);
             buttonModules_S1.get(i).setWidth(700);
-            buttonModules_S1.get(i).setBackgroundColor(Color.DKGRAY);
+            buttonModules_S1.get(i).setBackgroundColor(Color.BLACK);
             buttonModules_S1.get(i).setTextColor(Color.WHITE);
             buttonModules_S1.get(i).setText(modS1.get(i).getNom_module());
             buttonModules_S1.get(i).setTag(i);
